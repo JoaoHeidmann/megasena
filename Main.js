@@ -1,13 +1,13 @@
+//Codigo otimizado//
 function gerarNumerosMegaSena() {
-    const numeros = Array.from({ length: 60 }, (_, i) => i + 1);
-    const numerosGerados = [];
-
-    for (let i = 0; i < 6; i++) {
-        const indiceAleatorio = Math.floor(Math.random() * numeros.length);
-        numerosGerados.push(numeros[indiceAleatorio]);
-        numeros.splice(indiceAleatorio, 1);
+    const numeros = [];
+    for (let i = 1; i <= 60; i++) {
+        numeros.push(i);
     }
-
-    return numerosGerados;
+    for (let i = numeros.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numeros[i], numeros[j]] = [numeros[j], numeros[i]];
+    }
+    return numeros.slice(0, 6);
 }
 console.log(gerarNumerosMegaSena());
